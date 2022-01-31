@@ -1,6 +1,6 @@
-import _, { escape, filter } from "lodash";
+import _ from "lodash";
 import { Database } from "../src/database";
-import { minutes, Log } from "./utils";
+import { minutes  } from "./utils";
 import {
   MOVIE_GENRES,
   MOVIE_ACTORS,

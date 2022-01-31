@@ -31,31 +31,31 @@ const insertActors = (actors: string[]) => {
 };
 
 const insertKeywords = (keywords: string[]) => {
- return (`INSERT INTO KEYWORDS (keyword) VALUES` + 
+ return (`INSERT INTO ${KEYWORDS} (keyword) VALUES` + 
  keywords.map(keyword => `('${escape(keyword)}')`).join(",")
  );
 };
 
 const insertDirectors = (directors: string[]) => {
-  return (`insert into directors (full_name) values`+
+  return (`insert into ${DIRECTORS} (full_name) values`+
   directors.map(director => `('${escape(director)}')`).join(",")
   );
 };
 
 const insertGenres = (genres: string[]) => {
-  return (`insert into genres (genre) values`+
+  return (`insert into ${GENRES} (genre) values`+
   genres.map(genre => `('${escape(genre)}')`).join(",")
   );
 };
 
 const insertProductionCompanies = (companies: string[]) => {
-  return (`insert into PRODUCTION_COMPANIES (company_name) values`+
+  return (`insert into ${PRODUCTION_COMPANIES} (company_name) values`+
   companies.map(companie => `('${escape(companie)}')`).join(",")
   );
 };
 
 const insertMovies = (movies: Movie[]) => {
-  return (`insert into movies (
+  return (`insert into ${MOVIES} (
     imdb_id,popularity, budget, budget_adjusted,revenue,revenue_adjusted,
     original_title,homepage,tagline,overview,runtime,release_date) values`+
   movies.map(movie => `('${escape(movie.imdbId)}',${movie.popularity},${movie.budget},${movie.budgetAdjusted},
