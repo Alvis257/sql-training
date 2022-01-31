@@ -32,32 +32,32 @@ const CREATE_MOVIE_ACTORS_TABLE = `CREATE TABLE ${MOVIE_ACTORS}(
   movie_id integer NOT NULL,
   actor_id integer NOT NULL,
   Primary Key (movie_id, actor_id),
-  FOREIGN KEY (movie_id) REFERENCES ${MOVIES} (id),
-  FOREIGN KEY (actor_id) REFERENCES ${ACTORS} (id)
+  FOREIGN KEY (movie_id) REFERENCES ${MOVIES} (id) ON DELETE RESTRICT,
+  FOREIGN KEY (actor_id) REFERENCES ${ACTORS} (id) ON DELETE RESTRICT
 )`;
 
 const CREATE_MOVIE_DIRECTORS_TABLE = `CREATE TABLE ${MOVIE_DIRECTORS}(
   movie_id integer NOT NULL,
   director_id integer NOT NULL,
   Primary Key (movie_id,director_id),
-  FOREIGN KEY (movie_id) REFERENCES ${MOVIES} (id),
-  FOREIGN KEY (director_id) REFERENCES ${DIRECTORS} (id)
+  FOREIGN KEY (movie_id) REFERENCES ${MOVIES} (id) ON DELETE RESTRICT,
+  FOREIGN KEY (director_id) REFERENCES ${DIRECTORS} (id) ON DELETE RESTRICT
 )`;
 
 const CREATE_MOVIE_KEYWORDS_TABLE = `CREATE TABLE ${MOVIE_KEYWORDS}(
   movie_id integer NOT NULL,
   keyword_id integer NOT NULL,
   Primary Key (movie_id,keyword_id),
-  FOREIGN KEY (movie_id) REFERENCES ${MOVIES} (id) ,
-  FOREIGN KEY (keyword_id) REFERENCES ${KEYWORDS} (id) 
+  FOREIGN KEY (movie_id) REFERENCES ${MOVIES} (id) ON DELETE RESTRICT,
+  FOREIGN KEY (keyword_id) REFERENCES ${KEYWORDS} (id) ON DELETE RESTRICT
 )`;
 
 const CREATE_MOVIE_PRODUCTION_COMPANIES_TABLE = `CREATE TABLE ${MOVIE_PRODUCTION_COMPANIES}(
   movie_id integer NOT NULL,
   company_id integer NOT NULL,
   Primary Key (movie_id,company_id),
-  FOREIGN KEY (movie_id) REFERENCES ${MOVIES} (id),
-  FOREIGN KEY (company_id) REFERENCES ${PRODUCTION_COMPANIES} (id)
+  FOREIGN KEY (movie_id) REFERENCES ${MOVIES} (id) ON DELETE RESTRICT,
+  FOREIGN KEY (company_id) REFERENCES ${PRODUCTION_COMPANIES} (id) ON DELETE RESTRICT
 )`;
 
 describe("Insert Combined Data", () => {
