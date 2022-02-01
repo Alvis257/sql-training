@@ -11,54 +11,55 @@ import {
 } from "../src/table-names";
 import { tableInfo, indexList } from "../src/queries/table-info";
 
-const CREATE_MOVIES_TABLE = `create table ${MOVIES}(
-  id integer not null primary key,
-  imdb_id text not null,
-  popularity real not null,
-  budget real not null,
-  budget_adjusted real not null,
-  revenue real not null,
-  revenue_adjusted real not null,
-  original_title text not null,
+const CREATE_MOVIES_TABLE = `CREATE TABLE ${MOVIES}(
+  id integer NOT NULL primary key,
+  imdb_id text NOT NULL,
+  popularity real NOT NULL,
+  budget real NOT NULL,
+  budget_adjusted real NOT NULL,
+  revenue real NOT NULL,
+  revenue_adjusted real NOT NULL,
+  original_title text NOT NULL,
   homepage text,
   tagline text,
-  overview text not null,
-  runtime integer not null,
-  release_date text not null
+  overview text NOT NULL,
+  runtime integer NOT NULL,
+  release_date text NOT NULL
   )`;          
 
-const CREATE_MOVIE_RATINGS_TABLE = `create table ${MOVIE_RATINGS}(
-  user_id integer not null,
-  movie_id integer not null,
-  rating real not null,
-  time_created text not null,
+const CREATE_MOVIE_RATINGS_TABLE = `CREATE TABLE ${MOVIE_RATINGS}(
+  user_id integer NOT NULL,
+  movie_id integer NOT NULL,
+  rating real NOT NULL,
+  time_created text NOT NULL,
   primary key (user_id, movie_id)
   )`;
 
-const CREATE_ACTORS_TABLE = `create table ${ACTORS}(
-  id integer not null primary key,
-  full_name text not null
+const CREATE_ACTORS_TABLE = `CREATE TABLE ${ACTORS}(
+  id integer NOT NULL primary key,
+  full_name text NOT NULL
   )`;
 
 
-const CREATE_KEYWORDS_TABLE = `create table ${KEYWORDS}(
-  id integer not null primary key,
-  keyword text not null
+const CREATE_KEYWORDS_TABLE = `CREATE TABLE ${KEYWORDS}(
+  id integer NOT NULL primary key,
+  keyword text NOT NULL
   )`;
 
-const CREATE_DIRECTORS_TABLE = `create table ${DIRECTORS}(
-  id integer not null primary key,
-  full_name text not null
+const CREATE_DIRECTORS_TABLE = `CREATE TABLE ${DIRECTORS}(
+  id integer NOT NULL primary key,
+  full_name text NOT NULL
   )`;
 
-const CREATE_GENRES_TABLE = `create table ${GENRES}(
-  id integer not null primary key,
-  genre text not null
+const CREATE_GENRES_TABLE = `CREATE TABLE ${GENRES}(
+  id integer NOT NULL primary key,
+  genre text NOT NULL
+
   )`;
 
-const CREATE_PRODUCTION_COMPANIES_TABLE = `create table ${PRODUCTION_COMPANIES} (
-  id integer not null primary key,
-  company_name text not null
+const CREATE_PRODUCTION_COMPANIES_TABLE = `CREATE TABLE ${PRODUCTION_COMPANIES} (
+  id integer NOT NULL primary key,
+  company_name text NOT NULL
   )`;
 
 const CREATE_INDEX_MOVIES_RELEASE_DATE = `create index movies_release_date_idx ON ${MOVIES}(release_date)`;

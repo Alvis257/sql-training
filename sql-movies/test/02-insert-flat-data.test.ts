@@ -1,3 +1,4 @@
+
 import _ from "lodash";
 import { Database } from "../src/database";
 import { CsvLoader } from "../src/data/csv-loader";
@@ -11,12 +12,12 @@ import {
   selectMovie
 } from "../src/queries/select";
 import {
+  MOVIES,
   ACTORS,
   KEYWORDS,
   DIRECTORS,
   GENRES,
-  PRODUCTION_COMPANIES,
-  MOVIES
+  PRODUCTION_COMPANIES
 } from "../src/table-names";
 import { Movie } from "../src/data/types";
 import { escape } from "../src/utils";
@@ -24,29 +25,44 @@ import { minutes } from "./utils";
 
 const insertActors = (actors: string[]) => {
   return (
-    `insert into actors (full_name) values` +
-    actors.map(actor => `('${escape(actor)}')`).join(",")
+    `insert into ${ACTORS} (full_name) values` +
+    actors.map(actor => `('${escape(actor)}')`)
   );
 };
 
 const insertKeywords = (keywords: string[]) => {
-  throw new Error(`todo`);
+ return (`INSERT INTO ${KEYWORDS} (keyword) VALUES` + 
+ keywords.map(keyword => `('${escape(keyword)}')`).join(",")
+ );
 };
 
 const insertDirectors = (directors: string[]) => {
-  throw new Error(`todo`);
+  return (`insert into ${DIRECTORS} (full_name) values`+
+  directors.map(director => `('${escape(director)}')`).join(",")
+  );
 };
 
 const insertGenres = (genres: string[]) => {
-  throw new Error(`todo`);
+  return (`insert into ${GENRES} (genre) values`+
+  genres.map(genre => `('${escape(genre)}')`).join(",")
+  );
 };
 
 const insertProductionCompanies = (companies: string[]) => {
-  throw new Error(`todo`);
+  return (`insert into ${PRODUCTION_COMPANIES} (company_name) values`+
+  companies.map(companie => `('${escape(companie)}')`).join(",")
+  );
 };
 
 const insertMovies = (movies: Movie[]) => {
-  throw new Error(`todo`);
+  return (`insert into ${MOVIES} (
+    imdb_id,popularity, budget, budget_adjusted,revenue,revenue_adjusted,
+    original_title,homepage,tagline,overview,runtime,release_date) values`+
+  movies.map(movie => `('${escape(movie.imdbId)}',${movie.popularity},${movie.budget},${movie.budgetAdjusted},
+  ${movie.revenue},${movie.revenueAdjusted},'${escape(movie.originalTitle)}','${escape(movie.homepage)}','
+  ${escape(movie.tagline || '')}','${escape(movie.overview)}',${movie.runtime},
+  '${escape(movie.releaseDate)}')`)
+  );
 };
 
 describe("Insert Flat Data", () => {
